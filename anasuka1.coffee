@@ -54,5 +54,13 @@ if Meteor.isClient
 if Meteor.isServer
   Meteor.startup ->
 
+  Meteor.publish "allQuestions", ->
+    Questions.find()
+
+  FastRender.route "/", ->
+
+    @subscribe "allQuestions"
+    return
+
 
 # code to run on server at startup

@@ -1,7 +1,18 @@
 {
   "meteor": {},
   "dependencies": {
-    "basePackages": {},
-    "packages": {}
+    "basePackages": {
+      "fast-render": {
+        "git": "git://github.com/arunoda/meteor-fast-render.git",
+        "branch": "master"
+      }
+    },
+    "packages": {
+      "fast-render": {
+        "git": "git://github.com/arunoda/meteor-fast-render.git",
+        "branch": "master",
+        "commit": "baf79a3e5863acc3abfe2d0d62fb23b21fe880de"
+      }
+    }
   }
 }
