@@ -1,0 +1,119 @@
+<head>
+  <title>anasuka1</title>
+</head>
+
+<body>
+  {{> hello}}
+</body>
+
+<template name="hello">
+<div class='classic'>
+  <img src='anasuka1.png' style='width: 350px; margin: 0 auto; display: block' />
+  <article id="presentation">
+
+
+    {{#each questions}}
+     <section data-bespoke-state="reveal">
+      <h2>{{question}}</h2>
+      <div>
+        {{#each answers}}
+        <div class="radio">
+          <label>
+            <input type="radio" name="as" value="{{point}}">
+            {{answer}}
+          </label>
+        </div>
+        {{/each}}
+      </div>
+      <button type="button" class="next btn btn-default btn-lg">Next</button>
+      </section>
+    {{/each}}
+
+    <section data-bespoke-state="reveal">
+      <h2>How much would you like to start investing</h2>
+      <br/>
+      <input id="amount" type="text" class="form-control input-lg" placeholder="Enter Amount">
+      <br/>
+      <button type="button" class="finish btn btn-default btn-lg">Create my plan</button>
+    </section>
+
+    <section data-bespoke-state="reveal">
+      {{> finalslide}}
+    </section
+    
+  </article>
+</div>
+</template>
+
+<template name="finalslide">
+  {{#if finalyet}}
+
+  <h2>Congratulations, we just created an investment portfolio for you!<br/>$$$</h2>
+        <br/>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-xs-4 col-md-4 col-lg-4'>
+        {{#each final}}
+          <p>{{answer}} / {{point}}</p>
+        {{/each}}
+        <br/>
+      </div>
+      <div class='col-xs-8 col-md-8 col-lg-8'>
+        <table class="table">
+          <tr>
+            <td>SPY</td>
+            <td>23%</td>
+            <td>{{test ".23"}}</td>
+          </tr>
+          <tr>
+            <td>IWD</td>
+            <td>7%</td>
+            <td>{{test ".07"}}</td>
+          </tr>
+          <tr>
+            <td>EFA</td>
+            <td>20%</td>
+            <td>{{test ".2"}}</td>
+          </tr>
+          <tr>
+            <td>VWO</td>
+            <td>5%</td>
+            <td>{{test ".05"}}</td>
+          </tr>
+          <tr>
+            <td>TLT</td>
+            <td>10%</td>
+            <td>{{test ".1"}}</td>
+          </tr>
+          <tr>
+            <td>LQD</td>
+            <td>12%</td>
+            <td>{{test ".12"}}</td>
+          </tr>
+          <tr>
+            <td>HYG</td>
+            <td>5%</td>
+            <td>{{test ".05"}}</td>
+          </tr>
+          <tr>
+            <td>BWX</td>
+            <td>13%</td>
+            <td>{{test ".13"}}</td>
+          </tr>
+          <tr>
+            <td>CASH</td>
+            <td>5%</td>
+            <td>{{test ".05"}}</td>
+          </tr>
+          <tr>
+            
+            <td>TOTAL</td>
+            <td></td>
+            <td>{{test "1"}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  {{/if}}
+</template>
