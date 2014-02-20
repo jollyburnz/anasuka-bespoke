@@ -9,3 +9,5 @@ preserve-inputs
 coffeescript
 
 fast-render
+d3
+underscore

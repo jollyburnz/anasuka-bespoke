@@ -178,7 +178,7 @@ section.bespoke-slide {
 }
 
 section.bespoke-slide{
-  padding: 10px;
+  //padding: 10px;
 }
 
 section.bespoke-active {
@@ -198,6 +198,10 @@ section.bespoke-inactive {
 
 .loading{
   display: none;
+  text-align: center;
+}
+
+#pie{
   text-align: center;
 }
 
