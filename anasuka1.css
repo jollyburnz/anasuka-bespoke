@@ -11,6 +11,7 @@ body {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;
   color: #606060;
+  background: url(background.png);
 }
 
 a {
@@ -173,6 +174,11 @@ section.bespoke-slide {
   -o-transition: -o-transform .7s ease, opacity .7s ease, background-color .7s ease;
   transition: transform .7s ease, opacity .7s ease, background-color .7s ease;
 }
+
+section.bespoke-slide{
+  padding: 10px;
+}
+
 section.bespoke-active {
   opacity: 1;
   z-index: 1;
@@ -180,6 +186,12 @@ section.bespoke-active {
 section.bespoke-inactive {
   pointer-events: none;
   z-index: 0;
+}
+
+.bespoke-progress-bar{
+  margin-top: 4px;
+  background: #F9B727;
+  height: 4px;
 }
 
 @media only screen and (max-width: 768px) {

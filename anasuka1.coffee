@@ -8,7 +8,8 @@ if Meteor.isClient
 
   Template.hello.rendered = ->
     if Session.equals 'finalyet', false
-      window.deck = bespoke.from("#presentation")
+      window.deck = bespoke.from "#presentation", 
+        progress: true
 
   Template.hello.questions = ->
     Questions.find()

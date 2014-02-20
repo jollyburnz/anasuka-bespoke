@@ -58,7 +58,8 @@
 }
 .concave section,
 .concave .arrow:hover {
-	background: rgb(235, 156, 184);
+	//background: rgb(235, 156, 184);
+	background: transparent;
 }
 .concave a {
 	color: rgb(235, 156, 184);
@@ -100,7 +101,8 @@
 }
 .coverflow section,
 .coverflow .arrow:hover {
-	background: rgb(42, 206, 185);
+	//background: rgb(42, 206, 185);
+	background: transparent;
 }
 .coverflow a {
 	color: rgb(42, 206, 185);
