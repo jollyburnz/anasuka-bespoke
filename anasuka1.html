@@ -12,7 +12,7 @@
   <img src='anasuka1.png' style='width: 350px; margin: 20px auto 0; display: block;' />
   <article id="presentation">
     {{#each questions}}
-     <section data-bespoke-state="reveal">
+     <section>
       <h2>{{question}}</h2>
       <div>
         {{#each answers}}
@@ -28,7 +28,7 @@
       </section>
     {{/each}}
 
-    <section data-bespoke-state="reveal">
+    <section>
       <h2>How much would you like to start investing</h2>
       <br/>
       <input id="amount" type="text" class="form-control input-lg" placeholder="Enter Amount">
@@ -36,7 +36,14 @@
       <button type="button" class="finish btn btn-default btn-lg">Create my plan</button>
     </section>
 
-    <section data-bespoke-state="reveal">
+    <section>
+      <div class='loading'>
+        <h1>Please wait while we create your investment portfolio...</h1>
+        <img src='loading.gif'/>
+      </div>
+    </section>
+
+    <section>
       {{> finalslide}}
     </section
     
@@ -120,6 +127,6 @@
 
 <template name="footer">
   <footer>
-    <caption>Copyright 20145</caption>
+    <caption>Copyright 2014</caption>
   </footer>
 </template>

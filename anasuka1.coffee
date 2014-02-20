@@ -3,13 +3,16 @@ if Meteor.isClient
     Session.set 'finalyet', false
     window.answers = []
 
+
   Template.hello.greeting = ->
     "Welcome to anasuka1."
 
   Template.hello.rendered = ->
+    console.log 'rendered'
     if Session.equals 'finalyet', false
       window.deck = bespoke.from "#presentation", 
-        progress: true
+      progress: true
+
 
   Template.hello.questions = ->
     Questions.find()
@@ -25,8 +28,13 @@ if Meteor.isClient
     "click .finish": (e, t) ->
       #console.log t.find('#amount').value
       Session.set 'amount', t.find('#amount').value
-      Session.set 'finalyet', true
+      $('.loading').fadeIn()
       deck.next()
+      setTimeout ->
+        $('.loading').fadeOut()
+        deck.next()
+        Session.set 'finalyet', true
+      , 3000
 
     'change input[type=radio]': (e, t) ->
       console.log @

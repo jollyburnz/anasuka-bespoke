@@ -196,6 +196,11 @@ section.bespoke-inactive {
   height: 4px;
 }
 
+.loading{
+  display: none;
+  text-align: center;
+}
+
 @media only screen and (max-width: 768px) {
 /*  body {
     font-size: 10px;
