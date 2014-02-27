@@ -201,8 +201,19 @@ section.bespoke-inactive {
   text-align: center;
 }
 
+#finalslide{
+  width: 800px;
+  position: absolute;
+  left: 50%;
+  margin-left: -400px;
+}
+
 #pie{
   text-align: center;
+}
+
+.aboutyou p{
+  margin-left: 30px;
 }
 
 .offer div{

@@ -35,7 +35,7 @@
       </div>
     </section>
 
-    <section>
+    <section id="finalslide">
       {{> finalslidev2}}
     </section
     
@@ -44,13 +44,72 @@
 </template>
 
 <template name='finalslidev2'>
-
+  <div class='container'>
   {{#if finalyet}}
-    <h2>Congratulations, <br/>Here's your investment portfolio catered to you!</h2>
-          <br/>
-    <div id="chart1"></div>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <h2>Congrats, Here is your customized portfolio! Enjoy!</h2>
+    <br/>
+  
+    <div class='row'>
+      <div class="col-xs-offset-1 col-xs-9 aboutyou">
+        {{> aboutyou}}
+
+        <br/><br/>
+        <table class='table' style='text-align: center;'>
+          <tr>
+            <td>Cost of ETFs</td>
+            <td>0.3%</td>
+          </tr>
+          <tr>
+            <td>Advisory Fee</td>
+            <td>0.5%</td>
+          </tr>
+          <tr>
+            <td>Total Cost</td>
+            <td>0.8%</td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class="col-xs-8 col-xs-offset-2">
+        <div id="chart1"></div>
+      
+        <table class="table">
+          <tr>
+            <th>Asset Class</th>
+            <th>ETF Symbol</th>
+            <th>Weight</th>
+            <th>Value</th>
+          </tr>
+          {{#each breakdown}}
+          <tr>
+            <td>{{class}}</td>
+            <td>{{name}}</td>
+            <td>{{value}}</td>
+            <td>${{test value}}</td>
+          </tr>
+          {{/each}}
+        </table>
+        <br/><br/><br/><br/>
+      </div>
+    </div>
+
   {{/if}}
+  </div></div>
+</template>
+
+<template name='aboutyou'>
+  <h3>Here's what we know about you,</h3>
+  {{#with final}}
+    <p>are <b>{{[0].answer}}</b> years old</p>
+    <p>have <b>{{[1].answer}}</b> investment experience</p>
+    <p>want to invest for <b>{{[2].answer}}</b></p>
+    <p>are more likely to <b>{{[3].answer}}</b> after a significant decline in the stock</p>
+    <p>have a new worth of <b>{{[4].answer}}</b></p>
+    <p>with liquid assets of <b>{{[5].answer}}</b></p>
+  {{/with}}
 </template>
 
 <template name="finalslide">

@@ -167,6 +167,34 @@ if Meteor.isClient
           console.log i,  data[i].label, 'text legend'
           data[i].label
 
+  Template.finalslidev2.final = ->
+    Session.get 'finalanswers'
+
+  Template.finalslidev2.score = ->
+    answers = Session.get 'finalanswers'
+    score = _.reduce answers, ((memo, num) ->
+      memo + num.point
+    ), 0
+
+    if score > 3 and score < 9
+      1
+    else if  score > 10 and score < 18
+      2
+    else if score > 19 and  score < 25
+      3
+    else if score > 26 and score < 34
+      4
+    else if score > 35 and score < 41
+      5
+
+  Template.finalslidev2.breakdown = ->
+    Session.get 'breakdown'
+
+  Template.finalslidev2.test = (percent) ->
+    amount = Session.get 'amount'
+    invest = amount * parseFloat(percent)
+    invest.toFixed(2)
+
   Template.finalslidev2.finalyet = ->
     Session.equals 'finalyet', true
 
@@ -178,19 +206,83 @@ if Meteor.isClient
     inner = 50
     color = d3.scale.category20c()
 
-    breakdown = [
-      {"name":"SPY", "value":0.23},
-      {"name":"IWD", "value":0.07}, 
-      {"name":"EFA", "value":0.2}, 
-      {"name":"VWO", "value":0.05}, 
-      {"name":"TLT", "value":0.1}, 
-      {"name":"LQD", "value":0.12}, 
-      {"name":"HYG", "value":0.05}, 
-      {"name":"BWX", "value":0.13}, 
-      {"name":"CASH", "value":0.05}
-    ]
+    answers = Session.get 'finalanswers'
+    score = _.reduce answers, ((memo, num) ->
+      memo + num.point
+    ), 0
 
-    data = _.map(breakdown, (i) ->
+    if score > 3 and score < 9
+      breakdown = [
+        {"class": "US Equities", "name":"SPY", "value":0.11},
+        {"class": "Large Cap Value", "name":"IWD", "value":0},
+        {"class": "Small Cap Value", "name":"IWM", "value":0},
+        {"class": "Non US Equities", "name":"EFA", "value":0.09}, 
+        {"class": "Emerging Markets", "name":"VWO", "value":0}, 
+        {"class": "US Treasury Bonds", "name":"TLT", "value":0.35}, 
+        {"class": "US Corporate Bonds", "name":"LQD", "value":0.3}, 
+        {"class": "US High Yield Bonds", "name":"HYG", "value":0}, 
+        {"class": "Non US Treasury Bonds", "name":"BWX", "value":0.1}, 
+        {"class": "Cash", "name":"CASH", "value":0.05}
+      ]
+      Session.set 'breakdown', breakdown
+    else if  score > 10 and score < 18
+      breakdown = [
+        {"class": "US Equities","name":"SPY", "value":0.15},
+        {"class": "Large Cap Value", "name":"IWD", "value":0.05},
+        {"class": "Small Cap Value", "name":"IWM", "value":0},
+        {"class": "Non US Equities", "name":"EFA", "value":0.15}, 
+        {"class": "Emerging Markets", "name":"VWO", "value":0}, 
+        {"class": "US Treasury Bonds", "name":"TLT", "value":0.21}, 
+        {"class": "US Corporate Bonds", "name":"LQD", "value":0.21}, 
+        {"class": "US High Yield Bonds", "name":"HYG", "value":0.04}, 
+        {"class": "Non US Treasury Bonds", "name":"BWX", "value":0.14}, 
+        {"class": "Cash", "name":"CASH", "value":0.05}
+      ]
+      Session.set 'breakdown', breakdown
+    else if score > 19 and  score < 25
+      breakdown = [
+        {"class": "US Equities", "name":"SPY", "value":0.23},
+        {"class": "Large Cap Value", "name":"IWD", "value":0.07},
+        {"class": "Small Cap Value", "name":"IWM", "value":0},
+        {"class": "Non US Equities", "name":"EFA", "value":0.2}, 
+        {"class": "Emerging Markets", "name":"VWO", "value":0.05}, 
+        {"class": "US Treasury Bonds", "name":"TLT", "value":0.1}, 
+        {"class": "US Corporate Bonds", "name":"LQD", "value":0.12}, 
+        {"class": "US High Yield Bonds", "name":"HYG", "value":0.05}, 
+        {"class": "Non US Treasury Bonds", "name":"BWX", "value":0.13}, 
+        {"class": "Cash", "name":"CASH", "value":0.05}
+      ]
+      Session.set 'breakdown', breakdown
+    else if score > 26 and score < 34
+      breakdown = [
+        {"class": "US Equities", "name":"SPY", "value":0.26},
+        {"class": "Large Cap Value", "name":"IWD", "value":0.07},
+        {"class": "Small Cap Value", "name":"IWM", "value":0.04},
+        {"class": "Non US Equities", "name":"EFA", "value":0.26}, 
+        {"class": "Emerging Markets", "name":"VWO", "value":0.07}, 
+        {"class": "US Treasury Bonds", "name":"TLT", "value":0.06}, 
+        {"class": "US Corporate Bonds", "name":"LQD", "value":0.06}, 
+        {"class": "US High Yield Bonds", "name":"HYG", "value":0.04}, 
+        {"class": "Non US Treasury Bonds", "name":"BWX", "value":0.09}, 
+        {"class": "Cash", "name":"CASH", "value":0.05}
+      ]
+      Session.set 'breakdown', breakdown
+    else if score > 35 and score < 41
+      breakdown = [
+        {"class": "US Equities", "name":"SPY", "value":0.35},
+        {"class": "Large Cap Value", "name":"IWD", "value":0.11},
+        {"class": "Small Cap Value", "name":"IWM", "value":0.05},
+        {"class": "Non US Equities", "name":"EFA", "value":0.34}, 
+        {"class": "Emerging Markets", "name":"VWO", "value":0.1}, 
+        {"class": "US Treasury Bonds", "name":"TLT", "value":0}, 
+        {"class": "US Corporate Bonds", "name":"LQD", "value":0}, 
+        {"class": "US High Yield Bonds", "name":"HYG", "value":0}, 
+        {"class": "Non US Treasury Bonds", "name":"BWX", "value":0}, 
+        {"class": "Cash", "name":"CASH", "value":0.05}
+      ]
+      Session.set 'breakdown', breakdown
+
+    data = _.map(Session.get('breakdown'), (i) ->
       label : i.name
       value : i.value * (Session.get 'amount')
     )
@@ -284,6 +376,9 @@ if Meteor.isClient
 
     legend.on 'mouseover', ->
       console.log 'mouseover'
+
+  Template.aboutyou.final = ->
+    Session.get 'finalanswers'
 
 if Meteor.isServer
   Meteor.publish "allQuestions", ->
