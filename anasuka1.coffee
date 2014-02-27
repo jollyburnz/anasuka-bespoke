@@ -211,6 +211,7 @@ if Meteor.isClient
     color = d3.scale.category20c()
 
     answers = Session.get 'finalanswers'
+    amount = Session.get 'amount'
     score = _.reduce answers, ((memo, num) ->
       memo + num.point
     ), 0
@@ -288,7 +289,7 @@ if Meteor.isClient
 
     data = _.map(Session.get('breakdown'), (i) ->
       label : i.name
-      value : i.value * (Session.get 'amount')
+      value : i.value * amount
     )
 
     total = d3.sum(data, (d) ->
@@ -383,7 +384,13 @@ if Meteor.isClient
 
   Template.finalslidev2.events
     'click #submit': (e, t) ->
-      Meteor.call('sendEmail', $('#email').val())
+      email_address = $('#email').val()
+      
+      Meteor.call('sendEmail', email_address)
+      
+      Emails.insert
+        email: email_address
+      
       Session.set('done', true)
 
   Template.aboutyou.final = ->
