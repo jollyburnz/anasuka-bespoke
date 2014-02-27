@@ -195,8 +195,12 @@ if Meteor.isClient
     invest = amount * parseFloat(percent)
     invest.toFixed(2)
 
+  Template.finalslidev2.done = ->
+    Session.equals 'done', true
+
   Template.finalslidev2.finalyet = ->
     Session.equals 'finalyet', true
+
 
   Template.finalslidev2.rendered = ->
     console.log 'finalslide2'
@@ -377,11 +381,28 @@ if Meteor.isClient
     legend.on 'mouseover', ->
       console.log 'mouseover'
 
+  Template.finalslidev2.events
+    'click #submit': (e, t) ->
+      Meteor.call('sendEmail', $('#email').val())
+      Session.set('done', true)
+
   Template.aboutyou.final = ->
     Session.get 'finalanswers'
 
 if Meteor.isServer
   Meteor.publish "allQuestions", ->
     Questions.find()
+
+  process.env.MAIL_URL = "smtp://postmaster@sandbox18028.mailgun.org:9q3nxrc3rs88@smtp.mailgun.org:587"
+
+  Meteor.methods
+    sendEmail: (email) ->  
+      # send the email!
+      console.log email, 'email'
+      Email.send
+        to: email
+        from: "info@anasuka.com"
+        subject: "[ANASUKA] Congratulations!"
+        text: "We will share with you some news about us in a near future. See you soon! Party on!"
 
 # code to run on server at startup
