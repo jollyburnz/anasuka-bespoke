@@ -1,15 +1,6 @@
-<head>
-  <title>anasuka1</title>
-</head>
-
-<body>
-  {{> hello}}
-  {{> footer}}
-</body>
-
-<template name="hello">
+<template name="questionaire">
 <div class='classic'>
-  <img src='anasuka1.png' style='width: 350px; margin: 20px auto 0; display: block;' />
+
   <article id="presentation">
     {{#each questions}}
      <section>
@@ -45,11 +36,21 @@
     </section>
 
     <section>
-      {{> finalslide}}
+      {{> finalslidev2}}
     </section
     
   </article>
 </div>
+</template>
+
+<template name='finalslidev2'>
+
+  {{#if finalyet}}
+    <h2>Congratulations, <br/>Here's your investment portfolio catered to you!</h2>
+          <br/>
+    <div id="chart1"></div>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+  {{/if}}
 </template>
 
 <template name="finalslide">
@@ -129,10 +130,4 @@
   </div>
   <br/><br/><br/>
   {{/if}}
-</template>
-
-<template name="footer">
-  <footer>
-    <caption>Copyright 2014</caption>
-  </footer>
 </template>

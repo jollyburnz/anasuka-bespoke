@@ -11,3 +11,5 @@ coffeescript
 fast-render
 d3
 underscore
+
+iron-router

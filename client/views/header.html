@@ -1,0 +1,16 @@
+<template name='header'>
+
+  <a href='/'><img src='anasuka1.png' style='width: 350px; margin: 20px auto 0; display: block;' /></a>
+  <br/>
+  {{#if rest}}
+  <div class='container'><div class='row'><div class='col-md-10 col-md-offset-1'>
+    <ul class="nav nav-pills nav-justified">
+      <li id='home' class='{{TabActive "home"}}' ><a href="/">HOME</a></li>
+      <li id='we' class='{{TabActive "we"}}'><a href="/whoarewe">WHO ARE WE?</a></li>
+      <li id='invest' class='{{TabActive "invest"}}'><a href="/howweinvest">HOW WE INVEST?</a></li>
+      <li id='faq' class='{{TabActive "faq"}}'><a href="/">FAQ</a></li>
+    </ul>
+  </div></div></div>
+  {{/if}}
+
+</template>

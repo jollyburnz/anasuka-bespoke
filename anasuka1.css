@@ -205,6 +205,57 @@ section.bespoke-inactive {
   text-align: center;
 }
 
+.offer div{
+  text-align: center;
+}
+
+#home-first, #home-second, #home-third{
+  padding: 120px 0;
+}
+
+#fade{
+  margin: 40px 0 40px;
+}
+
+#chart{
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.circular{
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border: 2px solid #F9B727;
+}
+
+.howweinvest, .whoarewe{
+  margin: 120px 0;
+}
+
+.howweinvest div{
+  text-align: center
+}
+
+.inner{
+  width: 100%;
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+  text-align: left !important;
+}
+
+.outer{
+  position: relative;
+  display: table;
+  height: 300px;
+  vertical-align: middle;
+  float: left;
+}
+
 @media only screen and (max-width: 768px) {
 /*  body {
     font-size: 10px;

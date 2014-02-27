@@ -2,6 +2,7 @@
   "packages": {
     "fast-render": {
       "git": "git://github.com/arunoda/meteor-fast-render.git"
-    }
+    },
+    "iron-router": {}
   }
 }

@@ -3460,7 +3460,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eeeeee;
+  //background-color: #F9B727;
+  color: #F9B727;
 }
 .nav > li.disabled > a {
   color: #999999;
@@ -3569,7 +3570,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
   color: #ffffff;
-  background-color: #428bca;
+  background-color: #F9B727;
 }
 .nav-stacked > li {
   float: none;
