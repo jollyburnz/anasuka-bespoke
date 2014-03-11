@@ -50,33 +50,17 @@
     <br/>
   
     <div class='row'>
-      <div class="col-xs-offset-1 col-xs-10 aboutyou">
+      <!-- <div class="col-xs-offset-1 col-xs-10 aboutyou"> -->
+      <div class='col-xs-3'>
         <div>
         {{> aboutyou}}
         </div>
-
         <br/><br/>
-        <table class='table' style='text-align: center;'>
-          <tr>
-            <td>Cost of ETFs</td>
-            <td><b>0.3%</b></td>
-          </tr>
-          <tr>
-            <td>Advisory Fee</td>
-            <td><b>0.5%</b></td>
-          </tr>
-          <tr>
-            <td>Total Cost</td>
-            <td><b>0.8%</b></td>
-          </tr>
-        </table>
-
       </div>
-    </div>
 
-    <div class='row'>
-      <div class="col-xs-8 col-xs-offset-2">
+      <div class="col-xs-6">
         <div id="chart1"></div>
+        <div id='tablee'></div>
       
         <table class="table">
           <tr>
@@ -94,7 +78,26 @@
           </tr>
           {{/each}}
         </table>
+
       </div>
+
+      <div class="col-xs-3">
+        <table class='table' style='text-align: center;'>
+          <tr>
+            <td>Cost of ETFs</td>
+            <td><b>0.3%</b></td>
+          </tr>
+          <tr>
+            <td>Advisory Fee</td>
+            <td><b>0.5%</b></td>
+          </tr>
+          <tr>
+            <td>Total Cost</td>
+            <td><b>0.8%</b></td>
+          </tr>
+        </table>
+      </div>
+
     </div>
 
     <div class='row'>

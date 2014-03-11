@@ -199,8 +199,8 @@ if Meteor.isClient
     Session.equals 'done', true
 
   Template.finalslidev2.finalyet = ->
+    console.log (Session.equals 'finalyet', true), 'finalyet?'
     Session.equals 'finalyet', true
-
 
   Template.finalslidev2.rendered = ->
     console.log 'finalslide2'
@@ -209,12 +209,12 @@ if Meteor.isClient
     r = 150
     inner = 50
     color = d3.scale.category20c()
-
-    answers = Session.get 'finalanswers'
     amount = Session.get 'amount'
+    answers = Session.get 'finalanswers'
     score = _.reduce answers, ((memo, num) ->
       memo + num.point
     ), 0
+    console.log score, 'SCORE'
 
     if score > 3 and score < 9
       breakdown = [
@@ -229,7 +229,6 @@ if Meteor.isClient
         {"class": "Non US Treasury Bonds", "name":"BWX", "value":0.1}, 
         {"class": "Cash", "name":"CASH", "value":0.05}
       ]
-      Session.set 'breakdown', breakdown
     else if  score > 10 and score < 18
       breakdown = [
         {"class": "US Equities","name":"SPY", "value":0.15},
@@ -287,101 +286,118 @@ if Meteor.isClient
       ]
       Session.set 'breakdown', breakdown
 
-    if Session.get('breakdown')
-      data = _.map(Session.get('breakdown'), (i) ->
-        label : i.name
-        value : i.value * amount
-      )
+    data = _.map(breakdown, (i) ->
+      class : i.class
+      symbol : i.name
+      value : i.value * amount
+    )
 
-      total = d3.sum(data, (d) ->
-        d3.sum d3.values(d)
-      )
+    console.log data, 'data'
 
-      vis = d3.select("#chart1")
-        .append("svg:svg")
-        .data([data])
-          .attr("width", w)
-          .attr("height", h)
-        .append("svg:g")
-          .attr("transform", "translate(" + 200 + "," + 200 + ")")
-      
-      textTop = vis.append("text")
-        .attr("dy", ".35em")
-        .style("text-anchor", "middle")
-        .attr("class", "textTop")
-        .text("TOTAL")
-        .attr("y", -10)
-      
-      textBottom = vis.append("text")
-        .attr("dy", ".35em")
-        .style("text-anchor", "middle")
-        .attr("class", "textBottom")
-        .text(total.toFixed(2))
-        .attr("y", 10)
-      
-      arc = d3.svg.arc()
-        .innerRadius(inner)
-        .outerRadius(r)
-      
-      arcOver = d3.svg.arc()
-        .innerRadius(inner + 5)
-        .outerRadius(r + 5)
-      
-      pie = d3.layout.pie().value((d) ->
-        d.value
-      )
+    total = d3.sum(data, (d) ->
+      d3.sum d3.values(d)
+    )
 
-      arcs = vis.selectAll("g.slice")
-        .data(pie).enter()
-        .append("svg:g")
-          .attr("class", "slice")
-          .on("mouseover", (d, i) ->
-            console.log i
-            d3.select(this).select("path")
-              .transition()
-              .duration(200)
-              .attr "d", arcOver
-              textTop.text(d3.select(this).datum().data.label).attr("y", -10).attr('color')
-              textBottom.text("$" + d3.select(this).datum().data.value.toFixed(2)).attr "y", 10
-              return
-            )
-          .on("mouseout", (d) ->
-            d3.select(this).select("path").transition().duration(100).attr "d", arc
-            textTop.text("TOTAL").attr "y", -10
-            textBottom.text "$" + total.toFixed(2)
+    vis = d3.select("#chart1")
+      .append("svg:svg")
+      .data([data])
+        .attr("width", w)
+        .attr("height", h)
+      .append("svg:g")
+        .attr("transform", "translate(" + 200 + "," + 200 + ")")
+    
+    textTop = vis.append("text")
+      .attr("dy", ".35em")
+      .style("text-anchor", "middle")
+      .attr("class", "textTop")
+      .text("TOTAL")
+      .attr("y", -10)
+    
+    textBottom = vis.append("text")
+      .attr("dy", ".35em")
+      .style("text-anchor", "middle")
+      .attr("class", "textBottom")
+      .text(total.toFixed(2))
+      .attr("y", 10)
+    
+    arc = d3.svg.arc()
+      .innerRadius(inner)
+      .outerRadius(r)
+    
+    arcOver = d3.svg.arc()
+      .innerRadius(inner + 5)
+      .outerRadius(r + 5)
+    
+    pie = d3.layout.pie().value((d) ->
+      d.value
+    )
+
+    arcs = vis.selectAll("g.slice")
+      .data(pie).enter()
+      .append("svg:g")
+        .attr("class", "slice")
+        .on("mouseover", (d, i) ->
+          console.log i
+          d3.select(this).select("path")
+            .transition()
+            .duration(200)
+            .attr "d", arcOver
+            textTop.text(d3.select(this).datum().data.symbol).attr("y", -10).attr('color')
+            textBottom.text("$" + d3.select(this).datum().data.value.toFixed(2)).attr "y", 10
             return
           )
+        .on("mouseout", (d) ->
+          d3.select(this).select("path").transition().duration(100).attr "d", arc
+          textTop.text("TOTAL").attr "y", -10
+          textBottom.text "$" + total.toFixed(2)
+          return
+        )
 
-      arcs.append("svg:path")
-        .attr("fill", (d, i) ->
-          color i
-        ).attr "d", arc
+    arcs.append("svg:path")
+      .attr("fill", (d, i) ->
+        color i
+      ).attr "d", arc
 
-      legend = d3.select("#chart1").append("svg")
-        .attr("class", "legend")
-        .attr("width", 100)
-        .attr("height", r * 2)
-      .selectAll("g")
-        .data(data).enter()
-        .append("g")
-          .attr "transform", (d, i) ->
-            "translate(0," + i * 25 + ")"
+    table = d3.select('#tablee').append('table')
+      .attr('class', 'table')
 
-      legend.append("rect")
-        .attr("width", 16)
-        .attr("height", 16)
-        .style "fill", (d, i) ->
-          color i
+    tbody = table.append('tbody')
 
-      legend.append("text")
-        .attr("x", 24)
-        .attr("y", 7)
-        .attr("dy", ".35em")
-        .text (d) ->
-          d.label
+    rows = tbody.selectAll('tr')
+      .data(data).enter()
+      .append('tr')
 
-      legend.on 'mouseover', ->
-        console.log 'mouseover'
+    # cells = rows.selectAll('td')
+    #   .data((row) -> console.log row)
+    #   .enter()
+    #   .append('td')
+    #   .attr 'class', (d, i) -> console.log d, color i
+
+    # legend = d3.select("#chart1").append("svg")
+    #   .attr("class", "legend")
+    #   .attr("width", 100)
+    #   .attr("height", r * 2)
+    # .selectAll("g")
+    #   .data(data).enter()
+    #   .append("g")
+    #     .attr "transform", (d, i) ->
+    #       "translate(0," + i * 25 + ")"
+
+    # legend.append("rect")
+    #   .attr("width", 16)
+    #   .attr("height", 16)
+    #   .style "fill", (d, i) ->
+    #     color i
+
+    # legend.append("text")
+    #   .attr("x", 24)
+    #   .attr("y", 7)
+    #   .attr("dy", ".35em")
+    #   .text (d) ->
+    #     d.label
+
+    # legend.on 'mouseover', ->
+    #   console.log 'mouseover'
 
   Template.finalslidev2.events
     'click #submit': (e, t) ->
