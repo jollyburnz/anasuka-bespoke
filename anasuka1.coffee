@@ -118,82 +118,81 @@ if Meteor.isClient
     console.log score, 'SCORE'
 
     if score > 3 and score < 9
-      breakdown = [
-        {"class": "US Equities", "name":"SPY", "value":0.11},
-        {"class": "Large Cap Value", "name":"IWD", "value":0},
-        {"class": "Small Cap Value", "name":"IWM", "value":0},
-        {"class": "Non US Equities", "name":"EFA", "value":0.09}, 
-        {"class": "Emerging Markets", "name":"VWO", "value":0}, 
-        {"class": "US Treasury Bonds", "name":"TLT", "value":0.35}, 
-        {"class": "US Corporate Bonds", "name":"LQD", "value":0.3}, 
-        {"class": "US High Yield Bonds", "name":"HYG", "value":0}, 
-        {"class": "Non US Treasury Bonds", "name":"BWX", "value":0.1}, 
-        {"class": "Cash", "name":"CASH", "value":0.05}
+      window.breakdown = [
+        {"name": "US Equities", "symbol":"SPY", "value":0.11},
+        {"name": "Large Cap Value", "symbol":"IWD", "value":0},
+        {"name": "Small Cap Value", "symbol":"IWM", "value":0},
+        {"name": "Non US Equities", "symbol":"EFA", "value":0.09}, 
+        {"name": "Emerging Markets", "symbol":"VWO", "value":0}, 
+        {"name": "US Treasury Bonds", "symbol":"TLT", "value":0.35}, 
+        {"name": "US Corporate Bonds", "symbol":"LQD", "value":0.3}, 
+        {"name": "US High Yield Bonds", "symbol":"HYG", "value":0}, 
+        {"name": "Non US Treasury Bonds", "symbol":"BWX", "value":0.1}, 
+        {"name": "Cash", "symbol":"CASH", "value":0.05}
       ]
     else if  score > 10 and score < 18
-      breakdown = [
-        {"class": "US Equities","name":"SPY", "value":0.15},
-        {"class": "Large Cap Value", "name":"IWD", "value":0.05},
-        {"class": "Small Cap Value", "name":"IWM", "value":0},
-        {"class": "Non US Equities", "name":"EFA", "value":0.15}, 
-        {"class": "Emerging Markets", "name":"VWO", "value":0}, 
-        {"class": "US Treasury Bonds", "name":"TLT", "value":0.21}, 
-        {"class": "US Corporate Bonds", "name":"LQD", "value":0.21}, 
-        {"class": "US High Yield Bonds", "name":"HYG", "value":0.04}, 
-        {"class": "Non US Treasury Bonds", "name":"BWX", "value":0.14}, 
-        {"class": "Cash", "name":"CASH", "value":0.05}
+      window.breakdown = [
+        {"name": "US Equities","symbol":"SPY", "value":0.15},
+        {"name": "Large Cap Value", "symbol":"IWD", "value":0.05},
+        {"name": "Small Cap Value", "symbol":"IWM", "value":0},
+        {"name": "Non US Equities", "symbol":"EFA", "value":0.15}, 
+        {"name": "Emerging Markets", "symbol":"VWO", "value":0}, 
+        {"name": "US Treasury Bonds", "symbol":"TLT", "value":0.21}, 
+        {"name": "US Corporate Bonds", "symbol":"LQD", "value":0.21}, 
+        {"name": "US High Yield Bonds", "symbol":"HYG", "value":0.04}, 
+        {"name": "Non US Treasury Bonds", "symbol":"BWX", "value":0.14}, 
+        {"name": "Cash", "symbol":"CASH", "value":0.05}
       ]
       Session.set 'breakdown', breakdown
     else if score > 19 and  score < 25
-      breakdown = [
-        {"class": "US Equities", "name":"SPY", "value":0.23},
-        {"class": "Large Cap Value", "name":"IWD", "value":0.07},
-        {"class": "Small Cap Value", "name":"IWM", "value":0},
-        {"class": "Non US Equities", "name":"EFA", "value":0.2}, 
-        {"class": "Emerging Markets", "name":"VWO", "value":0.05}, 
-        {"class": "US Treasury Bonds", "name":"TLT", "value":0.1}, 
-        {"class": "US Corporate Bonds", "name":"LQD", "value":0.12}, 
-        {"class": "US High Yield Bonds", "name":"HYG", "value":0.05}, 
-        {"class": "Non US Treasury Bonds", "name":"BWX", "value":0.13}, 
-        {"class": "Cash", "name":"CASH", "value":0.05}
+      window.breakdown = [
+        {"name": "US Equities", "symbol":"SPY", "value":0.23},
+        {"name": "Large Cap Value", "symbol":"IWD", "value":0.07},
+        {"name": "Small Cap Value", "symbol":"IWM", "value":0},
+        {"name": "Non US Equities", "symbol":"EFA", "value":0.2}, 
+        {"name": "Emerging Markets", "symbol":"VWO", "value":0.05}, 
+        {"name": "US Treasury Bonds", "symbol":"TLT", "value":0.1}, 
+        {"name": "US Corporate Bonds", "symbol":"LQD", "value":0.12}, 
+        {"name": "US High Yield Bonds", "symbol":"HYG", "value":0.05}, 
+        {"name": "Non US Treasury Bonds", "symbol":"BWX", "value":0.13}, 
+        {"name": "Cash", "symbol":"CASH", "value":0.05}
       ]
       Session.set 'breakdown', breakdown
     else if score > 26 and score < 34
-      breakdown = [
-        {"class": "US Equities", "name":"SPY", "value":0.26},
-        {"class": "Large Cap Value", "name":"IWD", "value":0.07},
-        {"class": "Small Cap Value", "name":"IWM", "value":0.04},
-        {"class": "Non US Equities", "name":"EFA", "value":0.26}, 
-        {"class": "Emerging Markets", "name":"VWO", "value":0.07}, 
-        {"class": "US Treasury Bonds", "name":"TLT", "value":0.06}, 
-        {"class": "US Corporate Bonds", "name":"LQD", "value":0.06}, 
-        {"class": "US High Yield Bonds", "name":"HYG", "value":0.04}, 
-        {"class": "Non US Treasury Bonds", "name":"BWX", "value":0.09}, 
-        {"class": "Cash", "name":"CASH", "value":0.05}
+      window.breakdown = [
+        {"name": "US Equities", "symbol":"SPY", "value":0.26},
+        {"name": "Large Cap Value", "symbol":"IWD", "value":0.07},
+        {"name": "Small Cap Value", "symbol":"IWM", "value":0.04},
+        {"name": "Non US Equities", "symbol":"EFA", "value":0.26}, 
+        {"name": "Emerging Markets", "symbol":"VWO", "value":0.07}, 
+        {"name": "US Treasury Bonds", "symbol":"TLT", "value":0.06}, 
+        {"name": "US Corporate Bonds", "symbol":"LQD", "value":0.06}, 
+        {"name": "US High Yield Bonds", "symbol":"HYG", "value":0.04}, 
+        {"name": "Non US Treasury Bonds", "symbol":"BWX", "value":0.09}, 
+        {"name": "Cash", "symbol":"CASH", "value":0.05}
       ]
       Session.set 'breakdown', breakdown
     else if score > 35 and score < 41
-      breakdown = [
-        {"class": "US Equities", "name":"SPY", "value":0.35},
-        {"class": "Large Cap Value", "name":"IWD", "value":0.11},
-        {"class": "Small Cap Value", "name":"IWM", "value":0.05},
-        {"class": "Non US Equities", "name":"EFA", "value":0.34}, 
-        {"class": "Emerging Markets", "name":"VWO", "value":0.1}, 
-        {"class": "US Treasury Bonds", "name":"TLT", "value":0}, 
-        {"class": "US Corporate Bonds", "name":"LQD", "value":0}, 
-        {"class": "US High Yield Bonds", "name":"HYG", "value":0}, 
-        {"class": "Non US Treasury Bonds", "name":"BWX", "value":0}, 
-        {"class": "Cash", "name":"CASH", "value":0.05}
+      window.breakdown = [
+        {"name": "US Equities", "symbol":"SPY", "value":0.35},
+        {"name": "Large Cap Value", "symbol":"IWD", "value":0.11},
+        {"name": "Small Cap Value", "symbol":"IWM", "value":0.05},
+        {"name": "Non US Equities", "symbol":"EFA", "value":0.34}, 
+        {"name": "Emerging Markets", "symbol":"VWO", "value":0.1}, 
+        {"name": "US Treasury Bonds", "symbol":"TLT", "value":0}, 
+        {"name": "US Corporate Bonds", "symbol":"LQD", "value":0}, 
+        {"name": "US High Yield Bonds", "symbol":"HYG", "value":0}, 
+        {"name": "Non US Treasury Bonds", "symbol":"BWX", "value":0}, 
+        {"name": "Cash", "symbol":"CASH", "value":0.05}
       ]
       Session.set 'breakdown', breakdown
 
-    data = _.map(breakdown, (i) ->
-      class : i.class
-      symbol : i.name
-      value : i.value * amount
+    data = _.map(window.breakdown, (i) ->
+      name : i.name
+      symbol : i.symbol
+      weight: i.value
+      value : (i.value * amount).toFixed(2)
     )
-
-    console.log data, 'data'
 
     total = d3.sum(data, (d) ->
       d3.sum d3.values(d)
@@ -244,7 +243,7 @@ if Meteor.isClient
             .duration(200)
             .attr "d", arcOver
             textTop.text(d3.select(this).datum().data.symbol).attr("y", -10).attr('color')
-            textBottom.text("$" + d3.select(this).datum().data.value.toFixed(2)).attr "y", 10
+            textBottom.text("$" + d3.select(this).datum().data.value).attr "y", 10
             return
           )
         .on("mouseout", (d) ->
@@ -259,14 +258,51 @@ if Meteor.isClient
         color i
       ).attr "d", arc
 
-    table = d3.select('#tablee').append('table')
-      .attr('class', 'table')
+    console.log data, 'data'
 
-    tbody = table.append('tbody')
+    tabulate = (data, columns) ->
+      table = d3.select('#tablee').append('table')
+        .attr('class', 'table')
+      thead = table.append("thead")
+      tbody = table.append("tbody")
+      
+      # append the header row
+      thead.append("tr").selectAll("th").data(columns).enter().append("th").text (column) ->
+        column
+      
+      # create a row for each object in the data
+      rows = tbody.selectAll("tr").data(data).enter().append("tr").style('border-left', (d, i) -> "20px solid #{color i}")
+      
+      # create a cell in each row for each column
+      cells = rows.selectAll("td").data((row) ->
+        console.log row, 'row'
+        c = columns.map (column) ->
+          column: column
+          value: row[column]
+        console.log c, 'columns'
+        c
 
-    rows = tbody.selectAll('tr')
-      .data(data).enter()
-      .append('tr')
+      ).enter().append("td").text((d) ->
+        d.value
+      )
+      table
+
+    tabulate(data, ["name", "symbol", "weight", "value"])
+
+    # table = d3.select('#tablee').append('table')
+    #   .attr('class', 'table')
+
+    # tbody = table.append('tbody')
+
+    # rows = tbody.selectAll('tr')
+    #   .data(data).enter()
+    #   .append('tr')
+
+    # cells = rows.selectAll('td')
+    #   .data((row) -> row)
+    #   .enter()
+    #   .append("td")
+    #   .attr('class', (d) -> console.log d, 'cells data')
 
     # cells = rows.selectAll('td')
     #   .data((row) -> console.log row)

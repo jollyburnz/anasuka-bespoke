@@ -232,6 +232,12 @@ section.bespoke-inactive {
   margin: 40px 0 40px;
 }
 
+#chart1 svg{
+  position: relative;
+  left: 50%;
+  margin-left: -200px;
+}
+
 #chart{
   display: block;
   margin: 0 auto;
